@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Complete Finance Application Form</title>
+  <style>
+    /* -------------------------
+       COLOR PALETTE (Gold Theme)
+       ------------------------- */
+    :root {
+      --gold-accent: #CFB53B; /* Old Gold shade */
+      --gold-hover: #B29732;  /* Slightly darker gold for hover */
+      --background: #000000;  /* Black background */
+      --text-color: #333;     /* Dark text used on the white form */
+    }
+
+    /* -------------------------
+       BASE STYLING
+       ------------------------- */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Container for the entire form */
+    form {
+      background: #fff;
+      max-width: 800px;
+      width: 100%;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    /* -------------------------
+       LOGO CONTAINER
+       ------------------------- */
+    .logo-container {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .logo {
+      max-width: 250px; /* Bigger logo */
+      height: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--text-color);
+      margin-bottom: 30px;
+    }
+
+    /* -------------------------
+       FIELDSET & LEGEND
+       ------------------------- */
+    fieldset {
+      border: none;
+      background: #fafafa;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    legend {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: var(--gold-accent);
+    }
+
+    /* -------------------------
+       FORM GROUPS & LABELS
+       ------------------------- */
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+    .required::after {
+      content: "*";
+      color: red;
+      margin-left: 3px;
+    }
+
+    /* -------------------------
+       INPUTS & SELECTS
+       ------------------------- */
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 1em;
+      color: var(--text-color);
+    }
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold-accent);
+      box-shadow: 0 0 3px rgba(207, 181, 59, 0.5);
+    }
+
+    /* -------------------------
+       GRID LAYOUT FOR GROUPS
+       ------------------------- */
+    .flex-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    @media (max-width: 600px) {
+      .flex-group {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* -------------------------
+       CUSTOM CHECKBOX STYLING
+       ------------------------- */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .checkbox-group input[type="checkbox"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      position: relative;
+    }
+    .checkbox-group input[type="checkbox"]:checked {
+      background-color: var(--gold-accent);
+      border-color: var(--gold-accent);
+    }
+    .checkbox-group input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 1px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    /* -------------------------
+       HISTORY SECTION
+       ------------------------- */
+    .history-item {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+      display: none;
+      margin-bottom: 10px;
+    }
+
+    /* -------------------------
+       BUTTON STYLING
+       ------------------------- */
+    button {
+      background-color: var(--gold-accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: var(--gold-hover);
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo at the top -->
+  <div class="logo-container">
+    <!-- Replace "logo.png" with your logo image path -->
+    <img src="logo.png" alt="Company Logo" class="logo">
+  </div>
+
+  <!-- Finance Form using Formspree -->
+  <form id="financeForm" action="https://formspree.io/f/mgvojdja" method="POST">
+    <h1>Complete Finance Application</h1>
+
+    <!-- Personal Details -->
+    <fieldset>
+      <legend>Personal Details</legend>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="title" class="required">Title</label>
+          <select id="title" name="title" required>
+            <option value="">Select</option>
+            <option>Mr</option>
+            <option>Mrs</option>
+            <option>Miss</option>
+            <option>Ms</option>
+            <option>Dr</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="gender" class="required">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Prefer not to say</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="firstName" class="required">First Name</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="required">Surname</label>
+          <input type="text" id="surname" name="surname" required>
+        </div>
+      </div>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="dob" class="required">Date of Birth</label>
+          <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="form-group">
+          <label for="maritalStatus" class="required">Marital Status</label>
+          <select id="maritalStatus" name="maritalStatus" required>
+            <option value="">Select</option>
+            <option>Single</option>
+            <option>Married</option>
+            <option>Civil Partnership</option>
+            <option>Divorced</option>
+            <option>Widowed</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="nationality" class="required">Nationality</label>
+          <input type="text" id="nationality" name="nationality" required>
+        </div>
+        <div class="form-group">
+          <label for="birthCountry" class="required">Country of Birth</label>
+          <input type="text" id="birthCountry" name="birthCountry" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Contact Details -->
+    <fieldset>
+      <legend>Contact Details</legend>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="mobile" class="required">Mobile Phone</label>
+          <input type="tel" id="mobile" name="mobile" pattern="[0-9]{11}" placeholder="e.g., 07123456789" required>
+        </div>
+        <div class="form-group">
+          <label for="landline">Landline</label>
+          <input type="tel" id="landline" name="landline" pattern="[0-9]{10}" placeholder="e.g., 0123456789">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="required">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+    </fieldset>
+
+    <!-- Employment Details -->
+    <fieldset>
+      <legend>Employment Details</legend>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="employmentStatus" class="required">Employment Status</label>
+          <select id="employmentStatus" name="employmentStatus" required>
+            <option value="">Select</option>
+            <option>Employed</option>
+            <option>Self-Employed</option>
+            <option>Retired</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="occupationType" class="required">Occupation Type</label>
+          <select id="occupationType" name="occupationType" required>
+            <option value="">Select</option>
+            <option>Permanent</option>
+            <option>Contract</option>
+            <option>Temporary</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="occupation" class="required">Occupation</label>
+        <input type="text" id="occupation" name="occupation" required>
+      </div>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="annualIncome" class="required">Annual Gross Income (£)</label>
+          <input type="number" id="annualIncome" name="annualIncome" min="0" step="100" required>
+        </div>
+        <div class="form-group">
+          <label for="householdIncome" class="required">Household Annual Gross Income (£)</label>
+          <input type="number" id="householdIncome" name="householdIncome" min="0" step="100" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="employerName" class="required">Employer Name</label>
+        <input type="text" id="employerName" name="employerName" required>
+      </div>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="employerPostcode" class="required">Employer Postcode</label>
+          <input type="text" id="employerPostcode" name="employerPostcode" pattern="[A-Za-z]{1,2}[0-9][A-Za-z0-9]? [0-9][A-Za-z]{2}" placeholder="e.g., SW1A 1AA" required>
+        </div>
+        <div class="form-group">
+          <label for="employerTel" class="required">Employer Telephone</label>
+          <input type="tel" id="employerTel" name="employerTel" pattern="[0-9]{11}" placeholder="e.g., 07123456789" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="required">Time with Employer</label>
+        <div class="flex-group">
+          <input type="number" id="employmentYears" name="employmentYears" placeholder="Years" min="0" required>
+          <input type="number" id="employmentMonths" name="employmentMonths" placeholder="Months" min="0" max="11" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Residential Details -->
+    <fieldset>
+      <legend>Residential Details</legend>
+      <div class="form-group">
+        <label for="residentialStatus" class="required">Residential Status</label>
+        <select id="residentialStatus" name="residentialStatus" required>
+          <option value="">Select</option>
+          <option>Homeowner</option>
+          <option>Private Tenant</option>
+          <option>Council Tenant</option>
+          <option>Living with Parents</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="addressLine1" class="required">First Line of Address</label>
+        <input type="text" id="addressLine1" name="addressLine1" required>
+      </div>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="postcode" class="required">Postcode</label>
+          <input type="text" id="postcode" name="postcode" pattern="[A-Za-z]{1,2}[0-9][A-Za-z0-9]? [0-9][A-Za-z]{2}" placeholder="e.g., SW1A 1AA" required>
+        </div>
+        <div class="form-group">
+          <label class="required">Time at Address</label>
+          <div class="flex-group">
+            <input type="number" id="addressYears" name="addressYears" placeholder="Years" min="0" required>
+            <input type="number" id="addressMonths" name="addressMonths" placeholder="Months" min="0" max="11" required>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Bank Details -->
+    <fieldset>
+      <legend>Bank Details</legend>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="sortCode" class="required">Sort Code</label>
+          <input type="text" id="sortCode" name="sortCode" pattern="\d{2}-\d{2}-\d{2}" placeholder="00-00-00" required>
+        </div>
+        <div class="form-group">
+          <label for="accountNumber" class="required">Account Number</label>
+          <input type="number" id="accountNumber" name="accountNumber" min="0" required>
+        </div>
+      </div>
+      <div class="flex-group">
+        <div class="form-group">
+          <label for="accountName" class="required">Account Name</label>
+          <input type="text" id="accountName" name="accountName" required>
+        </div>
+        <div class="form-group">
+          <label for="yearsWithBank" class="required">Years with Bank</label>
+          <input type="number" id="yearsWithBank" name="yearsWithBank" min="0" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Additional History -->
+    <fieldset>
+      <legend>Additional History</legend>
+      <div id="historyError" class="error">
+        You need a total of at least 36 months of history. Add <span id="monthsNeeded">0</span> more months.
+      </div>
+      <div id="historyContainer"></div>
+      <div class="button-group">
+        <button type="button" id="addPreviousAddress">Add Previous Address</button>
+        <button type="button" id="addPreviousEmployment">Add Previous Employment</button>
+      </div>
+    </fieldset>
+
+    <!-- Consent Section -->
+    <fieldset>
+      <legend>Consent</legend>
+      <div class="checkbox-group">
+        <input type="checkbox" id="creditCheck" name="creditCheck" required>
+        <label for="creditCheck" class="required">I consent to a credit check</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms" class="required">I confirm the information is accurate</label>
+      </div>
+    </fieldset>
+
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const financeForm = document.getElementById('financeForm');
+      const historyContainer = document.getElementById('historyContainer');
+      const historyError = document.getElementById('historyError');
+      const monthsNeededSpan = document.getElementById('monthsNeeded');
+
+      // Helper: Calculate total months from all history inputs
+      function calculateTotalMonths() {
+        let total = 0;
+        total += (parseInt(document.getElementById('addressYears').value) || 0) * 12;
+        total += parseInt(document.getElementById('addressMonths').value) || 0;
+        total += (parseInt(document.getElementById('employmentYears').value) || 0) * 12;
+        total += parseInt(document.getElementById('employmentMonths').value) || 0;
+        historyContainer.querySelectorAll('.history-item').forEach(item => {
+          total += (parseInt(item.querySelector('.history-years').value) || 0) * 12;
+          total += parseInt(item.querySelector('.history-months').value) || 0;
+        });
+        return total;
+      }
+
+      // Validate history meets the minimum requirement
+      function validateHistory() {
+        const totalMonths = calculateTotalMonths();
+        if (totalMonths < 36) {
+          historyError.style.display = 'block';
+          monthsNeededSpan.textContent = 36 - totalMonths;
+          return false;
+        } else {
+          historyError.style.display = 'none';
+          return true;
+        }
+      }
+
+      // Add new history item
+      function addHistory(type) {
+        const div = document.createElement('div');
+        div.className = 'history-item';
+        div.innerHTML = `
+          <label>Previous ${type} Duration</label>
+          <div class="flex-group">
+            <input type="number" class="history-years" placeholder="Years" min="0">
+            <input type="number" class="history-months" placeholder="Months" min="0" max="11">
+            <button type="button" class="remove-history">Remove</button>
+          </div>
+        `;
+        historyContainer.appendChild(div);
+      }
+
+      // Event delegation for removing history items
+      historyContainer.addEventListener('click', function (event) {
+        if (event.target.classList.contains('remove-history')) {
+          event.target.closest('.history-item').remove();
+          validateHistory();
+        }
+      });
+
+      // Listeners for adding history items
+      document.getElementById('addPreviousAddress').addEventListener('click', function () {
+        addHistory('Address');
+        validateHistory();
+      });
+      document.getElementById('addPreviousEmployment').addEventListener('click', function () {
+        addHistory('Employment');
+        validateHistory();
+      });
+
+      // Revalidate on any form input change
+      financeForm.addEventListener('input', validateHistory);
+
+      // Form submission
+      financeForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (validateHistory()) {
+          alert('Form submitted successfully!');
+          // With Formspree, the form will be submitted automatically.
+          financeForm.submit();
+        } else {
+          alert('Please ensure you have at least 36 months of history.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
